@@ -19,6 +19,17 @@
     #services .feature .symbol{font-size:0}
     #services .feature .symbol::before{content:counter(kim-service,decimal-leading-zero);font-size:14px;font-weight:850;letter-spacing:.3px}
   </style>
+  <!-- Meta Pixel: Kim AI Studio dataset 763752954545097 -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){
+    n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;
+    s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+    (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','763752954545097');
+    fbq('track','PageView');
+  </script>
 </head>
 <body>
 <div class="top">AI-POWERED META ADS MANAGEMENT • เปิดรับลูกค้ารุ่นแรก</div>
@@ -37,5 +48,23 @@
 </main>
 <footer class="footer"><div class="container foot"><div><div class="brand">KIM <b>AI</b> STUDIO</div><div>AI-Powered Meta Ads Management</div></div><div>© 2026 Kim AI Studio · เว็บไซต์แนะนำบริการ · การชำระเงินดำเนินการผ่าน LINE OA กับเจ้าหน้าที่</div></div></footer>
 <div class="sticky"><a class="btn btn-primary" href="https://line.me/R/ti/p/@561irumv" target="_blank" rel="noopener noreferrer">สมัครบริการผ่าน LINE OA ↗</a></div>
+<script>
+  // Contact measures clicks to LINE OA, not completed chats or purchases.
+  // The plan is recorded only when the visitor uses a plan-specific button.
+  document.addEventListener('click', function (event) {
+    var link = event.target.closest('a[href*="line.me/R/ti/p/@561irumv"]');
+    if (!link || typeof window.fbq !== 'function') return;
+
+    var planLabel = link.getAttribute('data-plan') || '';
+    var packageCode = planLabel.indexOf('4,900') !== -1 ? '4900' :
+      planLabel.indexOf('1,900') !== -1 ? '1900' : 'unspecified';
+
+    window.fbq('track', 'Contact', {
+      contact_channel: 'LINE_OA',
+      package: packageCode,
+      button_text: (link.textContent || '').trim().slice(0, 80)
+    });
+  });
+</script>
 </body>
 </html>
